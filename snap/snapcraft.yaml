@@ -1,0 +1,34 @@
+name: my-nsupdate
+base: core20
+version: '0.1'
+summary: My snap for the nsupdate utility
+description: |
+  My snap for the nsupdate utility
+
+grade: devel
+confinement: devmode
+
+apps:
+  nsupdate:
+    command: usr/bin/nsupdate
+
+parts:
+  nsupdate:
+    plugin: nil
+    stage-packages:
+      - bind9-dnsutils
+      - libuv1
+    prime:
+      - usr/bin/nsupdate
+      - usr/lib/*/libbind9.so.*
+      - usr/lib/*/libdns.so.*
+      - usr/lib/*/libicudata.so.*
+      - usr/lib/*/libicuuc.so.*
+      - usr/lib/*/libirs.so.*
+      - usr/lib/*/libisc.so.*
+      - usr/lib/*/libisccfg.so.*
+      - usr/lib/*/liblmdb.so.*
+      - usr/lib/*/libmaxminddb.so.*
+      - usr/lib/*/libns.so.*
+      - usr/lib/*/libuv.so.*
+      - usr/lib/*/libxml2.so.*
